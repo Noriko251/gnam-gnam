@@ -1,0 +1,436 @@
+/*******************************
+Webサイト全体の指定
+*******************************/
+html {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ここから記述します。 */
+
+/*******************************
+変数の指定
+*******************************/
+$mainColor: #f9f5ed;
+$baseColor: #fff;
+$accentColor: #83776a;
+$fontSizeSmall: 14px;
+$fontSizeMedium: 20px;
+$fontSizeLarge: 32px;
+$font-primary: "Noto Sans JP", sans-serif;
+$font-secondary: "Noto Serif JP", serif;
+
+/*******************************
+mixin
+*******************************/
+@mixin price($price) {
+  &::after {
+    display: block;
+    content: $price;
+    font-family: $font-secondary;
+    font-size: 16px;
+    font-weight: bold;
+    color: $accentColor;
+  }
+}
+/*******************************
+共通パーツの指定
+*******************************/
+.u-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 80px 40px;
+
+  @media screen and (max-width: 768px) {
+    max-width: 390px;
+    padding: 80px 20px;
+  }
+}
+
+.u-title {
+  font-family: $font-secondary;
+  font-size: $fontSizeLarge;
+  font-weight: bold;
+  color: $accentColor;
+}
+
+.u-title--jp {
+  font-size: 16px;
+  color: $accentColor;
+  position: relative;
+  padding-left: 45px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 2px;
+    background: $accentColor;
+  }
+}
+
+.u-readMore {
+  display: block;
+  position: relative;
+  width: 180px;
+  text-align: center;
+  padding: 10px 0;
+  color: $accentColor;
+  background: $baseColor;
+  border: 1px solid $accentColor;
+  transition: 0.2s;
+  &::after {
+    content: "";
+    position: absolute;
+    right: -38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 1px;
+    background: $accentColor;
+    transition: 0.2s;
+  }
+  &:hover {
+    color: $baseColor;
+    background: $accentColor;
+    &::after {
+      right: -48px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+  }
+}
+
+/*******************************
+header
+*******************************/
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $baseColor;
+  z-index: 100;
+  .header__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      padding: 15px 20px;
+    }
+    nav {
+      display: block;
+      .header__list {
+        display: flex;
+        gap: 40px;
+        @media screen and (max-width: 768px) {
+          gap: 24px;
+        }
+        .header__link {
+          font-family: $font-secondary;
+          font-weight: bold;
+          color: $accentColor;
+          transition: 0.2s;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*******************************
+background
+*******************************/
+.bg {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../images/fixed_bg.png) center / cover no-repeat;
+  z-index: -1;
+}
+
+/*******************************
+fv
+*******************************/
+.firstView {
+  position: relative;
+  height: 600px;
+  margin-top: 82px;
+  background-size: cover;
+  background-position: bottom;
+  background-image: url(../images/fv.png);
+  background-repeat: no-repeat;
+  margin-left: 280px;
+  margin-right: 0;
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+  }
+  .firstView__title {
+    position: absolute;
+    left: -140px;
+    bottom: 80px;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+    font-family: $font-secondary;
+    font-size: 40px;
+    font-weight: bold;
+    color: $accentColor;
+    background: rgb(255, 255, 255, 0.8);
+    border: 1px solid $accentColor;
+    @media screen and (max-width: 768px) {
+      top: 100px;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      font-size: 24px;
+      margin: 0 auto;
+    }
+  }
+}
+
+/*******************************
+concept
+*******************************/
+.concept {
+  background: $baseColor;
+
+  .concept__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      max-width: 350px;
+    }
+    .concept__img {
+      display: block;
+      width: 470px;
+      @media screen and (max-width: 768px) {
+        max-width: 370px;
+        width: 100%;
+      }
+    }
+    .concept__desc {
+      display: block;
+      width: 470px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+      .concept__text {
+        margin-top: 64px;
+        margin-bottom: 40px;
+        @media screen and (max-width: 768px) {
+          margin: 40px auto;
+        }
+      }
+    }
+  }
+}
+
+/*******************************
+menu
+*******************************/
+.menu {
+  background: $mainColor;
+  .menu__inner {
+    display: block;
+    .menu__list {
+      display: flex;
+      gap: 40px;
+      margin: 28px auto 40px;
+      counter-reset: list-counter;
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        margin: 40px auto 60px;
+      }
+      .menu__item {
+        &:nth-child(1) {
+          p {
+            @include price("¥1,540-");
+          }
+        }
+        &:nth-child(2) {
+          margin-top: 40px;
+          p {
+            @include price("¥1,430-");
+          }
+          @media screen and (max-width: 768px) {
+            margin-top: 0;
+          }
+        }
+        &:nth-child(3) {
+          margin-top: 80px;
+          p {
+            @include price("¥1,540-");
+          }
+          @media screen and (max-width: 768px) {
+            margin-top: 0;
+          }
+        }
+        &::before {
+          counter-increment: list-counter;
+          content: counter(list-counter, decimal-leading-zero);
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          text-align: center;
+          line-height: 60px;
+          font-family: $font-secondary;
+          font-size: $fontSizeLarge;
+          font-weight: bold;
+          color: $accentColor;
+          background: rgb(255, 255, 255, 0.8);
+          z-index: 10;
+        }
+        .menu__img {
+          margin-bottom: 16px;
+        }
+      }
+    }
+    .u-readMore {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+/*******************************
+bigImg
+*******************************/
+.bigImage {
+  width: 100%;
+  height: 500px;
+  background: transparent;
+  z-index: 0;
+  @media screen and (max-width: 768px) {
+    height: 350px;
+    background: url(../images/fixed_bg.png) center / cover no-repeat;
+  }
+}
+
+/*******************************
+shop
+*******************************/
+.shop {
+  background: $baseColor;
+  .shop__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+    }
+    .shop__desc {
+      display: block;
+      max-width: 490px;
+      width: 100%;
+
+      .shop__title {
+        font-family: $font-secondary;
+        font-size: $fontSizeMedium;
+        font-weight: bold;
+        color: $accentColor;
+      }
+      .shop__info {
+        margin: 64px 0 38px;
+        @media screen and (max-width: 768px) {
+          margin: 40px 0;
+        }
+        .shop__dl {
+          .shop__dlGroup {
+            display: flex;
+            position: relative;
+            margin: 16px 0;
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              height: 1px;
+              width: 100%;
+              background: #ccc;
+            }
+            .shop__dt {
+              font-weight: normal;
+              width: 70px;
+              margin-right: 24px;
+            }
+            .shop__dd {
+              margin-bottom: 16px;
+            }
+          }
+        }
+      }
+    }
+    .shop__img {
+      max-width: 100%;
+    }
+  }
+}
+
+/*******************************
+footer
+*******************************/
+.footer {
+  background: $mainColor;
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    color: $accentColor;
+    .footer__logo {
+      margin-bottom: 16px;
+    }
+    .footer__nav {
+      margin-bottom: 24px;
+      .footer__list {
+        display: flex;
+        gap: 32px;
+        @media screen and (max-width: 768px) {
+          gap: 16px;
+        }
+        .footer__item {
+          font-family: $font-secondary;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+    .footer__copy {
+      font-size: $fontSizeSmall;
+    }
+  }
+}
+
+/*******************************
+reservation
+*******************************/
+.resv {
+  position: fixed;
+  bottom: 65px;
+  right: 0;
+}
