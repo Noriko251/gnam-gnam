@@ -173,12 +173,14 @@ fv
   position: relative;
   height: 600px;
   margin-top: 82px;
+  background-color: #fff;
   background-size: cover;
   background-position: bottom;
   background-image: url(../images/fv.png);
   background-repeat: no-repeat;
   margin-left: 280px;
   margin-right: 0;
+  z-index: 90;
 }
 @media screen and (max-width: 768px) {
   .firstView {
@@ -361,9 +363,12 @@ menu
 bigImg
 *******************************/
 .bigImage {
-  width: 100%;
   height: 500px;
-  background: transparent;
+  background: url(../images/fixed_bg.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 0;
 }
 @media screen and (max-width: 768px) {
